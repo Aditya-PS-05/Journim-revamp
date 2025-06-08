@@ -16,83 +16,87 @@ import { OverlapWrapperByAnima } from "./sections/OverlapWrapperByAnima/OverlapW
 export const Landing = (): JSX.Element => {
   // Carousel images data - all pointing to public/image.png
   const carouselImages = [
-    { id: 1, src: "/image.png", alt: "Element" },
-    { id: 2, src: "/image.png", alt: "Nimber" },
-    { id: 3, src: "/image.png", alt: "Dywing" },
-    { id: 4, src: "/image.png", alt: "Camp" },
-    { id: 5, src: "/image.png", alt: "Himachal" },
-    { id: 6, src: "/image.png", alt: "Car" },
-    { id: 7, src: "/image.png", alt: "Maaldivs" },
+    { id: 1, src: "/images/landing-bg/image3.svg", alt: "Element" },
+    { id: 2, src: "/images/landing-bg/image2.svg", alt: "Nimber" },
+    { id: 3, src: "/images/landing-bg/image3.svg", alt: "Dywing" },
+    { id: 4, src: "/images/landing-bg/image4.svg", alt: "Camp" },
+    { id: 5, src: "/images/landing-bg/image5.svg", alt: "Himachal" },
+    { id: 6, src: "/images/landing-bg/image6.svg", alt: "Car" },
+    { id: 7, src: "/images/landing-bg/image7.svg", alt: "Maaldivs" },
   ];
 
   return (
     <div className="relative w-full bg-white overflow-x-hidden">
-      <section className="relative w-full">
-        <div className="relative w-full">
-          <Carousel className="w-full">
-            <CarouselContent>
-              {carouselImages.map((image) => (
-                <CarouselItem key={image.id} className="w-full">
-                  <div className="h-[842px] w-full">
-                    <img
-                      src={image.src}
-                      className="w-full h-full object-cover"
-                      alt={image.alt}
-                    />
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
-
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-
-          <div className="absolute top-0 w-full">
-            <FrameByAnima />
-          </div>
-
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full max-w-[1109px]">
-            <h1 className="text-[120px] text-white font-normal whitespace-nowrap american-captain [text-shadow:0px_4px_14px_#00000040]">
-              Your Trip. Your Way.
-            </h1>
-            <p className="text-5xl text-white font-medium mt-6 outfit [text-shadow:0px_4px_14px_#00000040]">
-              From doorstep pickups to wild escapes all -in - one travel, built
-              by you, for you
-            </p>
-
-            <div className="flex justify-center mt-16 gap-4">
-              <Tabs defaultValue="plan" className="w-auto">
-                <TabsList className="p-0 bg-transparent space-x-4">
-                  <TabsTrigger
-                    value="plan"
-                    className="h-[84px] px-7 py-3.5 bg-[#2ec3d6] rounded-[7px] text-white data-[state=active]:bg-[#2ec3d6] data-[state=active]:text-white"
-                  >
-                    <div className="flex items-center">
-                      <PlaneIcon className="w-7 h-7 mr-4" />
-                      <span className="[font-family:'Montserrat',Helvetica] font-semibold text-[24.5px]">
-                        Plan a Trip
-                      </span>
+      {/* Full screen carousel section */}
+      <section className="relative w-full h-screen">
+        <div className="relative w-full h-full p-4">
+          <div className="relative w-full h-full rounded-[20px] overflow-hidden">
+            <Carousel className="w-full h-full">
+              <CarouselContent>
+                {carouselImages.map((image) => (
+                  <CarouselItem key={image.id} className="w-full h-full">
+                    <div className="h-full w-full">
+                      <img
+                        src={image.src}
+                        className="w-full h-full object-cover"
+                        alt={image.alt}
+                      />
                     </div>
-                  </TabsTrigger>
-                  <TabsTrigger
-                    value="book"
-                    className="h-[82px] px-7 py-3.5 bg-white rounded-[7px] text-[#030303] data-[state=active]:bg-white data-[state=active]:text-[#030303]"
-                  >
-                    <div className="flex items-center">
-                      <BedIcon className="w-7 h-7 mr-4" />
-                      <span className="[font-family:'Montserrat',Helvetica] font-semibold text-[23.8px]">
-                        Book a Trip
-                      </span>
-                    </div>
-                  </TabsTrigger>
-                </TabsList>
-              </Tabs>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
+
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+
+            <div className="absolute top-0 w-full">
+              <FrameByAnima />
+            </div>
+
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full max-w-[1109px]">
+              <h1 className="text-[120px] text-white font-normal whitespace-nowrap american-captain [text-shadow:0px_4px_14px_#00000040]">
+                Your Trip. Your Way.
+              </h1>
+              <p className="text-5xl text-white font-medium mt-6 outfit [text-shadow:0px_4px_14px_#00000040]">
+                From doorstep pickups to wild escapes all -in - one travel, built
+                by you, for you
+              </p>
+
+              <div className="flex justify-center mt-16 gap-4">
+                <Tabs defaultValue="plan" className="w-auto">
+                  <TabsList className="p-0 bg-transparent space-x-4">
+                    <TabsTrigger
+                      value="plan"
+                      className="h-[84px] px-7 py-3.5 bg-[#2ec3d6] rounded-[7px] text-white data-[state=active]:bg-[#2ec3d6] data-[state=active]:text-white"
+                    >
+                      <div className="flex items-center">
+                        <PlaneIcon className="w-7 h-7 mr-4" />
+                        <span className="[font-family:'Montserrat',Helvetica] font-semibold text-[24.5px]">
+                          Plan a Trip
+                        </span>
+                      </div>
+                    </TabsTrigger>
+                    <TabsTrigger
+                      value="book"
+                      className="h-[82px] px-7 py-3.5 bg-white rounded-[7px] text-[#030303] data-[state=active]:bg-white data-[state=active]:text-[#030303]"
+                    >
+                      <div className="flex items-center">
+                        <BedIcon className="w-7 h-7 mr-4" />
+                        <span className="[font-family:'Montserrat',Helvetica] font-semibold text-[23.8px]">
+                          Book a Trip
+                        </span>
+                      </div>
+                    </TabsTrigger>
+                  </TabsList>
+                </Tabs>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="w-full mt-10 flex flex-col items-center">
+      {/* About Us section - New page */}
+      <section className="w-full min-h-screen flex flex-col items-center pt-20">
         <h2 className="[font-family:'Montserrat',Helvetica] font-semibold text-[80px] text-center">
           <span className="text-black">About </span>
           <span className="text-[#2dc3d7]">Us</span>
