@@ -102,35 +102,39 @@ export const OverlapWrapperByAnima = (): JSX.Element => {
         </div>
 
         {/* Footer Section */}
-        <footer className="w-[85%] mx-auto border-2 border-red-500">
+        <footer className="w-[85%] mx-auto">
           <div className="flex flex-wrap justify-between">
             {/* Brand and Social Media */}
-            <div className="flex flex-col gap-6">
-              <h2 className="american-captain font-normal text-white text-[38.5px]">
-                Journim
-              </h2>
-              <div className="flex items-center gap-3">
-                <div className="relative w-[22px] h-[22px]">
-                  <div className="relative w-5 h-5 top-px left-px bg-[100%_100%]" />
-                </div>
-                <img
-                  className="w-[22px] h-[22px]"
-                  alt="Akar icons twitter"
-                  src="/akar-icons-twitter-fill.svg"
-                />
-                <div className="relative w-[22px] h-[22px] overflow-hidden">
-                  <div className="relative w-[22px] h-[15px] top-1 bg-[100%_100%]" />
-                </div>
-                <img
-                  className="w-[22px] h-[22px]"
-                  alt="Ant design instagram"
-                  src="/ant-design-instagram-filled.svg"
-                />
-              </div>
-            </div>
+            <div className="flex flex-col gap-6 mr-20">
+  <h2 className="american-captain font-normal text-white text-[38.5px]">
+    Journim
+  </h2>
+  <div className="flex items-center gap-3">
+    <img
+      className="w-[22px] h-[22px]"
+      alt="YouTube"
+      src="/images/footer/facebook.png"
+    />
+    <img
+      className="w-[22px] h-[22px]"
+      alt="X (Twitter)"
+      src="/images/footer/x.png"
+    />
+    <img
+      className="w-[22px] h-[22px]"
+      alt="Facebook"
+      src="/images/footer/youtube.png"
+    />
+    <img
+      className="w-[22px] h-[22px]"
+      alt="Instagram"
+      src="/images/footer/instagram.png"
+    />
+  </div>
+</div>
 
             {/* Footer Links */}
-            <div className="flex flex-wrap gap-6 flex-1 justify-end">
+            <div className="flex flex-wrap gap-10 flex-1 justify-between">
               {footerSections.map((section, index) => (
                 <div key={index} className="flex flex-col gap-4 flex-1">
                   <h3

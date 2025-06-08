@@ -10,7 +10,6 @@ import { Tabs, TabsList, TabsTrigger } from "../../components/ui/tabs";
 import { FrameByAnima } from "./sections/FrameByAnima/FrameByAnima";
 import { FrameWrapperByAnima } from "./sections/FrameWrapperByAnima";
 import { GroupByAnima } from "./sections/GroupByAnima/GroupByAnima";
-import { LetSGoHasslefreeByAnima } from "./sections/LetSGoHasslefreeByAnima/LetSGoHasslefreeByAnima";
 import { OverlapWrapperByAnima } from "./sections/OverlapWrapperByAnima/OverlapWrapperByAnima";
 
 export const Landing = (): JSX.Element => {
