@@ -96,69 +96,84 @@ export const Landing = (): JSX.Element => {
       </section>
 
       {/* About Us section - New page */}
-      <section className="w-full min-h-screen flex flex-col items-center pt-20">
+      <section className="w-full min-h-screen flex flex-col items-center pt-20 border-2 border-red-500">
         <h2 className="[font-family:'Montserrat',Helvetica] font-semibold text-[80px] text-center">
           <span className="text-black">About </span>
           <span className="text-[#2dc3d7]">Us</span>
         </h2>
 
-        <div className="relative w-full flex justify-center mt-16">
-          <div className="relative w-[369px] h-[421px] -left-[129px] rotate-[34.78deg]">
-            <div className="relative w-[464px] h-[469px] -top-[42px] -left-[52px]">
-              <Card className="absolute w-[284px] h-[360px] top-[72px] left-[93px] rotate-[-14.89deg] shadow-[0px_6.23px_54.3px_#00000040]">
-                <CardContent className="p-0">
+        <div className="relative w-full flex justify-center items-center mt-16 px-8">
+          {/* Left polaroid card */}
+          <div className="relative transform -left-[60px] rotate-[+15deg] translate-x-[-50px] z-10">
+            <Card className="w-[280px] h-[360px] bg-white shadow-[0px_8px_40px_rgba(0,0,0,0.15)] rounded-lg overflow-hidden">
+              <CardContent className="p-6 h-full flex flex-col">
+                <div className="flex-1 mb-4 overflow-hidden rounded-md">
                   <img
-                    src="/image.png"
-                    className="absolute w-[326px] h-[344px] top-[62px] left-[69px] rotate-[-34.78deg] object-cover"
-                    alt="Mountain"
+                    src="/images/about-us/mountain.png"
+                    className="w-full h-full object-cover"
+                    alt="Mountain Adventure"
                   />
-                  <div className="absolute w-[209px] top-[381px] left-[169px] rotate-[-14.89deg] [font-family:'Montserrat',Helvetica] font-semibold text-black text-[21.2px] text-center tracking-[0] leading-[31.7px]">
+                </div>
+                <div className="text-center">
+                  <h3 className="[font-family:'Montserrat',Helvetica] font-semibold text-black text-[20px]">
                     Journim
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+                  </h3>
+                </div>
+              </CardContent>
+            </Card>
           </div>
 
-          <div className="max-w-[964px] mx-auto [font-family:'Montserrat',Helvetica] font-normal text-[#5b5b5b] text-[23.6px] text-center tracking-[0] leading-[36.7px]">
+          {/* Center content */}
+          <div className="max-w-[964px] mx-auto px-12 [font-family:'Montserrat',Helvetica] font-normal text-[#5b5b5b] text-[23.6px] text-center tracking-[0] leading-[36.7px] z-20">
             At Journim, We Believe Planning Your Dream Trip Should Be As Fun As
             Living It. Whether You&#39;re Spontaneous Or A Meticulous Planner,
             We Put You In Control—without The Stress. No Cookie-cutter Plans. No
             Hidden Fees. Just Smart, Customizable Itineraries Tailored By You.
             <br />
             <br />
-            our Intelligent Algorithm Turns Your Vibe, Time, And Budget Into A
+            Our Intelligent Algorithm Turns Your Vibe, Time, And Budget Into A
             Trip That Fits Perfectly. From Booking Stays And Rides To Curating
             Must-see Spots, Journim Is Your Travel Sidekick. Your Time, Your
             Pace, Your Vibe—let&apos;s Make It Unforgettable. One Step Closer To
             Your Dream Trip. That&apos;s The Journey We&apos;re Here For.
           </div>
 
-          <div className="relative w-[369px] h-[421px] -right-[129px] rotate-[145.22deg]">
-            <div className="relative w-[464px] h-[469px] -top-[7px] -left-[52px]">
-              <Card className="absolute w-[284px] h-[360px] top-[37px] left-[93px] rotate-[-14.89deg] shadow-[0px_6.23px_54.3px_#00000040]">
-                <CardContent className="p-0">
+          {/* Right polaroid card */}
+          <div className="relative transform -right-[60px] rotate-[-15deg] translate-x-[50px] z-10">
+            <Card className="w-[280px] h-[360px] bg-white shadow-[0px_8px_40px_rgba(0,0,0,0.15)] rounded-lg overflow-hidden">
+              <CardContent className="p-6 h-full flex flex-col">
+                <div className="flex-1 mb-4 overflow-hidden rounded-md">
                   <img
-                    src="/image.png"
-                    className="absolute w-[326px] h-[344px] top-[62px] left-[69px] rotate-[-145.22deg] object-cover"
-                    alt="Hp"
+                    src="/images/about-us/travel.png"
+                    className="w-full h-full object-cover"
+                    alt="Travel Experience"
                   />
-                  <div className="absolute w-[209px] top-[346px] left-[169px] rotate-[165.29deg] [font-family:'Montserrat',Helvetica] font-semibold text-black text-[21.2px] text-center tracking-[0] leading-[31.7px]">
+                </div>
+                <div className="text-center">
+                  <h3 className="[font-family:'Montserrat',Helvetica] font-semibold text-black text-[20px]">
                     Journim
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+                  </h3>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
-      </section>
 
-      <section className="w-full mt-16">
-        <div className="text-center [font-family:'Montserrat',Helvetica] font-normal text-[#5b5b5b] text-2xl">
-          Our Reach Till Date
+        <div className="w-full mt-16">
+              
+          <div className="w-full flex justify-center">
+            <h2 className="font-['Montserrat',Helvetica] font-semibold text-[80px] tracking-[0] leading-normal text-center">
+              <span className="text-black">Let&#39;s go </span>
+              <span className="text-[#2dc3d7]">Hasslefree </span>
+              <span className="text-black">with Journim</span>
+            </h2>
+         </div>
+
+          <div className="text-center [font-family:'Montserrat',Helvetica] font-normal text-[#5b5b5b] text-2xl">
+            Our Reach Till Date
+          </div>
+          
         </div>
-
-        <LetSGoHasslefreeByAnima />
       </section>
 
       <section className="w-full bg-[#66d7e5b2] mt-10">
