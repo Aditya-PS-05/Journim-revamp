@@ -114,50 +114,53 @@ const mapDots = [
 
 export const GroupByAnima = (): JSX.Element => {
   return (
-    <section className="relative w-full max-w-[1086px] h-[694px] mx-auto my-12">
-      <div className="relative w-[917px] h-[694px]">
-        {/* Location Cards */}
-        {locationData.map((location) => (
-          <Card
-            key={location.id}
-            className={`flex items-center justify-center gap-[13.8px] pl-[6.9px] pr-[13.8px] py-[6.9px] bg-neutrals rounded-[6.9px] ${location.className}`}
-          >
-            <CardContent className="p-0">
-              <div className="relative flex items-center">
-                <img
-                  className="w-[42px] h-[38px] object-cover"
-                  alt={location.alt}
-                />
-                <div className="inline-flex flex-col items-start justify-center ml-4">
-                  <div
-                    className={`w-fit mt-[-1.73px] font-semibold text-blackish-green text-[17.3px] font-['Montserrat',Helvetica] tracking-[0] leading-normal ${location.nameClassName || ""}`}
-                  >
-                    {location.name}
-                  </div>
-                  <div className="w-fit font-normal text-blackish-green text-[13.8px] font-['Montserrat',Helvetica] tracking-[0] leading-normal">
-                    {location.state}
+    <section className="relative w-full min-h-screen bg-[#67D8E6] flex items-center justify-center py-12">
+      <div className="relative w-[1086px] h-[694px]">
+        <div className="relative w-[917px] h-[694px] mx-auto">
+          {/* Location Cards */}
+          {locationData.map((location) => (
+            <Card
+              key={location.id}
+              className={`flex items-center justify-center gap-[13.8px] pl-[6.9px] pr-[13.8px] py-[6.9px] bg-white rounded-[6.9px] ${location.className}`}
+            >
+              <CardContent className="p-0">
+                <div className="relative flex items-center">
+                  <img
+                    className="w-[42px] h-[38px] object-cover"
+                    alt={location.alt}
+                    src={`/images/locations/${location.alt.toLowerCase()}.png`}
+                  />
+                  <div className="inline-flex flex-col items-start justify-center ml-4">
+                    <div
+                      className={`w-fit mt-[-1.73px] font-semibold text-[#2e2e2e] text-[17.3px] font-['Montserrat',Helvetica] tracking-[0] leading-normal ${location.nameClassName || ""}`}
+                    >
+                      {location.name}
+                    </div>
+                    <div className="w-fit font-normal text-[#2e2e2e] text-[13.8px] font-['Montserrat',Helvetica] tracking-[0] leading-normal">
+                      {location.state}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-
-        <div className="absolute w-[836px] h-[694px] top-0 left-[81px]">
-          {/* Vector paths for map connections */}
-          {vectorPaths.map((vector, index) => (
-            <img
-              key={index}
-              className={vector.className}
-              alt={vector.alt}
-              src={vector.src}
-            />
+              </CardContent>
+            </Card>
           ))}
 
-          {/* Decorative dots on the map */}
-          {mapDots.map((dot, index) => (
-            <div key={index} className={dot.className} />
-          ))}
+          <div className="absolute w-[836px] h-[694px] top-0 left-[81px]">
+            {/* Vector paths for map connections */}
+            {vectorPaths.map((vector, index) => (
+              <img
+                key={index}
+                className={vector.className}
+                alt={vector.alt}
+                src={vector.src}
+              />
+            ))}
+
+            {/* Decorative dots on the map */}
+            {mapDots.map((dot, index) => (
+              <div key={index} className={dot.className} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

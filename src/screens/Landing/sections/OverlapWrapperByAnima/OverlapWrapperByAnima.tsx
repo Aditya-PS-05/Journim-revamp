@@ -1,4 +1,3 @@
-import React from "react";
 import { Card, CardContent } from "../../../../components/ui/card";
 
 export const OverlapWrapperByAnima = (): JSX.Element => {
@@ -8,13 +7,15 @@ export const OverlapWrapperByAnima = (): JSX.Element => {
       name: "Aman Gopal",
       title: "CEO",
       secondTitle: "Co-Founder",
-      imageAlt: "Ellipse",
+      imageAlt: "Aman Gopal - CEO & Co-Founder",
+      imageSrc: "/images/founders/aman.png",
     },
     {
       name: "Sahil Birda",
       title: "COO",
       secondTitle: "Co-Founder",
-      imageAlt: "Profile image",
+      imageAlt: "Sahil Birda - COO & Co-Founder",
+      imageSrc: "/images/founders/sahil.png",
     },
   ];
 
@@ -43,40 +44,25 @@ export const OverlapWrapperByAnima = (): JSX.Element => {
     },
   ];
 
-  // Star positions data for decorative elements
-  const starPositions = [
-    { top: "162px", left: "55px", width: "11px", height: "3px" },
-    { top: "56px", left: "113px", width: "11px", height: "3px" },
-    { top: "10px", left: "125px", width: "3.5px", height: "15px" },
-    { top: "49px", left: "263px", width: "2.5px", height: "11px" },
-    { top: "154px", left: "279px", width: "2.5px", height: "11px" },
-    { top: "-3px", left: "119px", width: "2.5px", height: "11px" },
-    { top: "172px", left: "231px", width: "15px", height: "4px" },
-    { top: "49px", left: "1.5px", width: "9px", height: "9px" },
-  ];
-
   return (
-    <section className="relative w-full py-16 bg-[#85dfeb]">
-      <div className="relative w-full max-w-[1574px] mx-auto">
+    <section className="relative w-full py-16 bg-[#85dfeb] mt-[170px]">
+      <div className="relative mx-auto">
         {/* Founders Card */}
-        <Card className="relative w-full max-w-[1355px] bg-[#c0ecf2] rounded-[21.99px] shadow-[0px_4.4px_17.59px_#1122110d] overflow-hidden mb-16">
+        <Card className="relative mx-auto w-[85%] mt-[-170px] bg-[#c0ecf2] rounded-[21.99px] shadow-[0px_4.4px_17.59px_#1122110d] overflow-hidden mb-16">
           <CardContent className="p-0">
             <div className="p-14 pb-0">
               <h2 className="font-['Montserrat',Helvetica] font-semibold text-[#1e1e1e] text-[48.4px] leading-[59.4px]">
                 Meet our Founders
               </h2>
 
-              <div className="flex flex-wrap gap-16 mt-12">
+              <div className="flex flex-wrap justify-start gap-[150px] mt-12 mb-12">
                 {founders.map((founder, index) => (
-                  <div key={index} className="flex items-start gap-6">
-                    {index === 0 ? (
-                      <img
-                        className="w-36 h-36 rounded-full object-cover"
-                        alt={founder.imageAlt}
-                      />
-                    ) : (
-                      <div className="w-36 h-36 rounded-full bg-cover bg-[50%_50%]" />
-                    )}
+                  <div key={index} className="flex items-center gap-6">
+                    <img
+                      className="w-36 h-36 rounded-full object-cover"
+                      src={founder.imageSrc}
+                      alt={founder.imageAlt}
+                    />
                     <div className="flex flex-col gap-2">
                       <h3 className="opacity-70 font-['Montserrat',Helvetica] font-semibold text-blackish-green text-[26.6px]">
                         {founder.name}
@@ -103,37 +89,24 @@ export const OverlapWrapperByAnima = (): JSX.Element => {
           </CardContent>
         </Card>
 
-        {/* Decorative Element */}
-        <div className="absolute top-6 right-0 w-[496px] h-[512px] rotate-[5.67deg]">
+        {/* Decorative Element with Car Image */}
+        <div className="absolute top-6 right-[70px] w-[496px] h-[512px] rotate-[5.67deg]">
           <div className="relative h-full">
-            <div className="absolute w-full h-full">
-              <div className="relative w-[544px] h-[558px] -top-6 -left-6">
-                <div className="relative w-[331px] h-[389px] top-[85px] left-24">
-                  <div className="absolute w-[293px] h-[238px] top-[25px] left-[19px] rotate-[-10.44deg]">
-                    {starPositions.map((star, index) => (
-                      <img
-                        key={index}
-                        className={`absolute w-[${star.width}] h-[${star.height}] top-[${star.top}] left-[${star.left}] rotate-[10.44deg]`}
-                        alt="Star"
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* Car Image */}
             <img
-              className="absolute w-[397px] h-[309px] top-28 left-[27px] rotate-[-5.67deg]"
-              alt="Group"
+              className="absolute w-[350px] h-[250px] top-10 left-[160px] rotate-[25deg] object-cover"
+              src="/images/founders/car.png"
+              alt="Car"
             />
           </div>
         </div>
 
         {/* Footer Section */}
-        <footer className="w-full max-w-[1355px]">
+        <footer className="w-[85%] mx-auto border-2 border-red-500">
           <div className="flex flex-wrap justify-between">
             {/* Brand and Social Media */}
             <div className="flex flex-col gap-6">
-              <h2 className="font-['American_Captain-Regular',Helvetica] font-normal text-white text-[38.5px]">
+              <h2 className="american-captain font-normal text-white text-[38.5px]">
                 Journim
               </h2>
               <div className="flex items-center gap-3">
