@@ -50,9 +50,9 @@ export default function Home() {
   return (
     <div className="relative w-full bg-white overflow-x-hidden">
       {/* Full screen carousel section */}
-      <section className="relative w-full h-screen">
-        <div className="relative w-full h-full p-4">
-          <div className="relative w-full h-full rounded-[20px] overflow-hidden">
+      <section className="relative w-full h-[60vh] sm:h-[80vh] md:h-screen">
+        <div className="relative w-full h-full p-2 sm:p-4">
+          <div className="relative w-full h-full rounded-[16px] sm:rounded-[20px] overflow-hidden">
             <Carousel 
               setApi={setApi}
               className="w-full h-full"
@@ -82,36 +82,36 @@ export default function Home() {
               <Navbar />
             </div>
 
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full max-w-[1109px]">
-              <h1 className="text-[120px] text-white font-normal whitespace-nowrap american-captain [text-shadow:0px_4px_14px_#00000040]">
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full max-w-[95vw] sm:max-w-[1109px] px-2">
+              <h1 className="text-[40px] sm:text-[60px] md:text-[90px] lg:text-[120px] text-white font-normal whitespace-nowrap american-captain [text-shadow:0px_4px_14px_#00000040]">
                 Your Trip. Your Way.
               </h1>
-              <p className="text-5xl text-white font-medium mt-6 outfit [text-shadow:0px_4px_14px_#00000040]">
+              <p className="text-2xl sm:text-4xl md:text-5xl text-white font-medium mt-4 sm:mt-6 outfit [text-shadow:0px_4px_14px_#00000040]">
                 From doorstep pickups to wild escapes all -in - one travel, built
                 by you, for you
               </p>
 
-              <div className="flex justify-center mt-20 gap-4">
+              <div className="flex flex-col sm:flex-row justify-center mt-8 sm:mt-20 gap-3 sm:gap-4 w-full max-w-[95vw]">
                 <Tabs defaultValue="plan" className="w-auto">
-                  <TabsList className="p-0 bg-transparent space-x-4">
+                  <TabsList className="p-0 bg-transparent space-x-0 sm:space-x-4 flex flex-col sm:flex-row gap-2 sm:gap-0">
                     <TabsTrigger
                       value="plan"
-                      className="h-[84px] px-7 py-3.5 bg-[#2ec3d6] rounded-[7px] text-white data-[state=active]:bg-[#2ec3d6] data-[state=active]:text-white"
+                      className="h-[60px] sm:h-[84px] px-4 sm:px-7 py-2.5 sm:py-3.5 bg-[#2ec3d6] rounded-[7px] text-white data-[state=active]:bg-[#2ec3d6] data-[state=active]:text-white"
                     >
                       <div className="flex items-center">
-                        <PlaneIcon className="w-7 h-7 mr-4" />
-                        <span className="[font-family:'Montserrat',Helvetica] font-semibold text-[24.5px]">
+                        <PlaneIcon className="w-6 h-6 sm:w-7 sm:h-7 mr-2 sm:mr-4" />
+                        <span className="[font-family:'Montserrat',Helvetica] font-semibold text-lg sm:text-[24.5px]">
                           Plan a Trip
                         </span>
                       </div>
                     </TabsTrigger>
                     <TabsTrigger
                       value="book"
-                      className="h-[82px] px-7 py-3.5 bg-white rounded-[7px] text-[#030303] data-[state=active]:bg-white data-[state=active]:text-[#030303]"
+                      className="h-[58px] sm:h-[82px] px-4 sm:px-7 py-2.5 sm:py-3.5 bg-white rounded-[7px] text-[#030303] data-[state=active]:bg-white data-[state=active]:text-[#030303]"
                     >
                       <div className="flex items-center">
-                        <BedIcon className="w-7 h-7 mr-4" />
-                        <span className="[font-family:'Montserrat',Helvetica] font-semibold text-[23.8px]">
+                        <BedIcon className="w-6 h-6 sm:w-7 sm:h-7 mr-2 sm:mr-4" />
+                        <span className="[font-family:'Montserrat',Helvetica] font-semibold text-lg sm:text-[23.8px]">
                           Book a Trip
                         </span>
                       </div>
@@ -125,18 +125,18 @@ export default function Home() {
       </section>
 
       {/* About Us section - New page */}
-      <section className="w-full min-h-screen flex flex-col items-center pt-20">
-        <h2 className="[font-family:'Montserrat',Helvetica] font-semibold text-[80px] text-center">
+      <section className="w-full min-h-[60vh] sm:min-h-screen flex flex-col items-center pt-10 sm:pt-20 px-2">
+        <h2 className="[font-family:'Montserrat',Helvetica] font-semibold text-[36px] sm:text-[60px] md:text-[80px] text-center">
           <span className="text-black">About </span>
           <span className="text-[#2dc3d7]">Us</span>
         </h2>
 
-        <div className="relative w-full flex justify-center items-center mt-16 px-8">
+        <div className="relative w-full flex flex-col lg:flex-row justify-center items-center mt-8 sm:mt-16 px-2 sm:px-8 gap-6">
           {/* Left polaroid card */}
-          <div className="relative transform -left-[60px] rotate-[+15deg] translate-x-[-50px] z-10">
-            <Card className="w-[280px] h-[360px] bg-white shadow-[0px_8px_40px_rgba(0,0,0,0.15)] rounded-lg overflow-hidden">
-              <CardContent className="p-6 h-full flex flex-col">
-                <div className="flex-1 mb-4 overflow-hidden rounded-md">
+          <div className="relative mb-6 lg:mb-0 transform lg:-left-[60px] lg:rotate-[15deg] lg:translate-x-[-50px] z-10">
+            <Card className="w-[90vw] max-w-[320px] sm:w-[280px] h-[220px] sm:h-[360px] bg-white shadow-[0px_8px_40px_rgba(0,0,0,0.15)] rounded-lg overflow-hidden">
+              <CardContent className="p-4 sm:p-6 h-full flex flex-col">
+                <div className="flex-1 mb-2 sm:mb-4 overflow-hidden rounded-md">
                   <img
                     src="/images/about-us/mountain.png"
                     className="w-full h-full object-cover"
@@ -144,7 +144,7 @@ export default function Home() {
                   />
                 </div>
                 <div className="text-center">
-                  <h3 className="[font-family:'Montserrat',Helvetica] font-semibold text-black text-[20px]">
+                  <h3 className="[font-family:'Montserrat',Helvetica] font-semibold text-black text-[16px] sm:text-[20px]">
                     Journim
                   </h3>
                 </div>
@@ -153,7 +153,7 @@ export default function Home() {
           </div>
 
           {/* Center content */}
-          <div className="max-w-[964px] mx-auto px-12 [font-family:'Montserrat',Helvetica] font-normal text-[#5b5b5b] text-[23.6px] text-center tracking-[0] leading-[36.7px] z-20">
+          <div className="max-w-[95vw] sm:max-w-[964px] mx-auto px-2 sm:px-12 [font-family:'Montserrat',Helvetica] font-normal text-[#5b5b5b] text-base sm:text-[23.6px] text-center tracking-[0] leading-[1.7] z-20">
             At Journim, We Believe Planning Your Dream Trip Should Be As Fun As
             Living It. Whether You&#39;re Spontaneous Or A Meticulous Planner,
             We Put You In Control—without The Stress. No Cookie-cutter Plans. No
@@ -168,10 +168,10 @@ export default function Home() {
           </div>
 
           {/* Right polaroid card */}
-          <div className="relative transform -right-[60px] rotate-[-15deg] translate-x-[50px] z-10">
-            <Card className="w-[280px] h-[360px] bg-white shadow-[0px_8px_40px_rgba(0,0,0,0.15)] rounded-lg overflow-hidden">
-              <CardContent className="p-6 h-full flex flex-col">
-                <div className="flex-1 mb-4 overflow-hidden rounded-md">
+          <div className="relative mt-6 lg:mt-0 transform lg:-right-[60px] lg:rotate-[-15deg] lg:translate-x-[50px] z-10">
+            <Card className="w-[90vw] max-w-[320px] sm:w-[280px] h-[220px] sm:h-[360px] bg-white shadow-[0px_8px_40px_rgba(0,0,0,0.15)] rounded-lg overflow-hidden">
+              <CardContent className="p-4 sm:p-6 h-full flex flex-col">
+                <div className="flex-1 mb-2 sm:mb-4 overflow-hidden rounded-md">
                   <img
                     src="/images/about-us/travel.png"
                     className="w-full h-full object-cover"
@@ -179,7 +179,7 @@ export default function Home() {
                   />
                 </div>
                 <div className="text-center">
-                  <h3 className="[font-family:'Montserrat',Helvetica] font-semibold text-black text-[20px]">
+                  <h3 className="[font-family:'Montserrat',Helvetica] font-semibold text-black text-[16px] sm:text-[20px]">
                     Journim
                   </h3>
                 </div>
@@ -188,24 +188,21 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="w-full mt-16">
-              
+        <div className="w-full mt-10 sm:mt-16">
           <div className="w-full flex justify-center">
-            <h2 className="font-['Montserrat',Helvetica] font-semibold text-[80px] tracking-[0] leading-normal text-center">
+            <h2 className="font-['Montserrat',Helvetica] font-semibold text-[32px] sm:text-[60px] md:text-[80px] tracking-[0] leading-normal text-center">
               <span className="text-black">Let&#39;s go </span>
               <span className="text-[#2dc3d7]">Hasslefree </span>
               <span className="text-black">with Journim</span>
             </h2>
-         </div>
-
-          <div className="text-center [font-family:'Montserrat',Helvetica] font-normal text-[#5b5b5b] text-2xl">
+          </div>
+          <div className="text-center [font-family:'Montserrat',Helvetica] font-normal text-[#5b5b5b] text-lg sm:text-2xl">
             Our Reach Till Date
           </div>
-          
         </div>
       </section>
 
-      <section className="w-full bg-[#66d7e5b2] mt-10">
+      <section className="w-full bg-[#66d7e5b2] mt-6 sm:mt-10">
         <LocateIndia />
       </section>
 
