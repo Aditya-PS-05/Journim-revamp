@@ -1,16 +1,5 @@
 "use client";
 
-import { BedIcon, PlaneIcon } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  type CarouselApi,
-} from "@/components/ui/carousel";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useEffect, useState } from "react";
-
 import { Navbar } from "@/components/base/Navbar/Navbar";
 import { Reviews } from "@/components/base/Reviews/Reviews";
 import { LocateIndia } from "@/components/base/LocateIndia/LocateIndia";
