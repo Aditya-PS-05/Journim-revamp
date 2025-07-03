@@ -8,13 +8,12 @@ import About from "@/components/base/About/About";
 import Hero from "@/components/base/Hero/Hero";
 
 export default function Home() {
-
   return (
     <div className="relative w-full bg-white overflow-x-hidden">
 
       <div className="absolute p-4 w-full z-10">
-              <Navbar />
-            </div>
+        <Navbar />
+      </div>
       {/* Full screen carousel section */}
       <Hero />
 

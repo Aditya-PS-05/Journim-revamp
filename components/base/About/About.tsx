@@ -13,7 +13,7 @@ const About = () => {
 
         <div className="relative w-full flex flex-col lg:flex-row justify-center items-center mt-8 sm:mt-16 px-2 sm:px-8 gap-6">
           {/* Left polaroid card */}
-          <div className="relative mb-6 lg:mb-0 transform lg:-left-[60px] lg:rotate-[15deg] lg:translate-x-[-50px] z-10">
+          <div className="absolute mb-6 lg:mb-0 transform -left-[60px] rotate-[15deg] md:translate-x-[-60px] translate-x-[-150px] z-10">
             <Card className="w-[90vw] max-w-[320px] sm:w-[280px] h-[220px] sm:h-[360px] bg-white shadow-[0px_8px_40px_rgba(0,0,0,0.15)] rounded-lg overflow-hidden">
               <CardContent className="p-4 sm:p-6 h-full flex flex-col">
                 <div className="flex-1 mb-2 sm:mb-4 overflow-hidden rounded-md">
@@ -33,7 +33,7 @@ const About = () => {
           </div>
 
           {/* Center content */}
-          <div className="max-w-[95vw] sm:max-w-[964px] mx-auto px-2 sm:px-12 [font-family:'Montserrat',Helvetica] font-normal text-[#5b5b5b] text-base sm:text-[23.6px] text-center tracking-[0] leading-[1.7] z-20">
+          <div className="relative max-w-[60vw] sm:max-w-[964px] mx-auto px-2 sm:px-12 [font-family:'Montserrat',Helvetica] font-normal text-[#5b5b5b] text-base sm:text-[23.6px] text-center tracking-[0] leading-[1.7] z-20">
             At Journim, We Believe Planning Your Dream Trip Should Be As Fun As
             Living It. Whether You&#39;re Spontaneous Or A Meticulous Planner,
             We Put You In Control—without The Stress. No Cookie-cutter Plans. No
@@ -48,7 +48,7 @@ const About = () => {
           </div>
 
           {/* Right polaroid card */}
-          <div className="relative mt-6 lg:mt-0 transform lg:-right-[60px] lg:rotate-[-15deg] lg:translate-x-[50px] z-10">
+          <div className="absolute mt-6 lg:mt-0 transform -right-[60px] rotate-[-15deg] md:translate-x-[50px] translate-x-[150px] z-10">
             <Card className="w-[90vw] max-w-[320px] sm:w-[280px] h-[220px] sm:h-[360px] bg-white shadow-[0px_8px_40px_rgba(0,0,0,0.15)] rounded-lg overflow-hidden">
               <CardContent className="p-4 sm:p-6 h-full flex flex-col">
                 <div className="flex-1 mb-2 sm:mb-4 overflow-hidden rounded-md">
