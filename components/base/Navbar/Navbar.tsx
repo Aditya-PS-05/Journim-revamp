@@ -1,14 +1,13 @@
 "use client";
 
-import { BedIcon, PlaneIcon, Menu, X } from "lucide-react";
+import { BedIcon, PlaneIcon, Menu, X, LogOut } from "lucide-react";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
-import { useRouter, usePathname } from "next/navigation";
+import { useSession, signOut } from "next-auth/react";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 export const Navbar = () => {
   const { data: session } = useSession();
-  const router = useRouter();
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -20,7 +19,6 @@ export const Navbar = () => {
   const iconColor = isMainPage ? "text-white" : "text-black";
   const navBg = "bg-transparent"
   const buttonBg = "bg-transparent"
-  const buttonLogoutBg = isMainPage ? "bg-red-500 text-white" : "bg-red-500 text-white";
 
   const navItems = [
     {
@@ -50,19 +48,28 @@ export const Navbar = () => {
 
           {/* Centered Logo */}
           <div className="absolute left-1/2 transform -translate-x-1/2">
-            <Link href="/" className="text-[#2EC3D6] text-[30px] font-normal american-captain">
+            <Link href="/" className="text-white text-[30px] font-normal american-captain">
               Journim
             </Link>
           </div>
 
           {/* Profile Icon */}
-          <div className="flex items-center">
+          <div className="flex items-center gap-2">
             {session && session.user ? (
-              <img
-                src={session.user.image || "/images/auth/user.png"}
-                alt={session.user.name || "User"}
-                className="w-10 h-10 rounded-full object-cover"
-              />
+              <>
+                <img
+                  src={session.user.image || "/images/auth/user.png"}
+                  alt={session.user.name || "User"}
+                  className="w-10 h-10 rounded-full object-cover"
+                />
+                <button
+                  onClick={() => signOut()}
+                  className={`p-2 ${iconColor} hover:bg-white/10 rounded-full transition-colors`}
+                  aria-label="Logout"
+                >
+                  <LogOut size={20} />
+                </button>
+              </>
             ) : (
               <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center">
                 <span className={`text-sm ${textColor}`}>?</span>
@@ -108,26 +115,36 @@ export const Navbar = () => {
               <>
                 <div className="flex items-center gap-4">
                   <img
-                    src={session.user.image || "/images/auth/user.png"}
+                    src={session.user.image || "/images/navbar/profile.png"}
                     alt={session.user.name || "User"}
-                    className="w-12 h-12 rounded-[18px] object-cover"
+                    className="w-10 h-10 rounded-[18px] object-cover"
                   />
                   <span className="text-[15.51px] font-semibold text-[#23272E]" style={{ fontFamily: "'Montserrat', Helvetica" }}>
                     {session.user.name?.split(" ")[0] || "User"} {session.user.name?.split(" ")[1]?.[0] || ""}
                   </span>
+                  <button
+                    onClick={() => signOut()}
+                    className={`p-2 ${iconColor} hover:cursor-pointer rounded-[10px] transition-colors flex items-center gap-2`}
+                    aria-label="Logout"
+                  >
+                    <LogOut size={20} />
+                    <span className="text-sm font-medium" style={{ fontFamily: "'Montserrat', Helvetica" }}>
+                      Logout
+                    </span>
+                  </button>
                 </div>
               </>
             ) : (
               <>
                 <Link
-                  className={`font-semibold text-neutrals text-[15.5px] ${textColor}`}
+                  className={`font-semibold text-neutrals text-[15.5px] text-white ${textColor}`}
                   style={{ fontFamily: "'Montserrat', Helvetica" }}
                   href="/auth/login"
                 >
                   Login
                 </Link>
 
-                <Link className={`h-[53.16px] px-[26.58px] py-[11.08px] rounded-[8.86px] ${buttonBg}`} href="/auth/signup">
+                <Link className={`h-[53.16px] px-[26.58px] py-[11.08px] bg-white text-black rounded-[8.86px] ${buttonBg}`} href="/auth/signup">
                   <span
                     className="font-semibold text-[14px]"
                     style={{ fontFamily: "'Montserrat', Helvetica" }}
@@ -170,7 +187,32 @@ export const Navbar = () => {
               );
             })}
             
-            {!session && (
+            {session && session.user ? (
+              <div className="flex flex-col space-y-3 pt-4 border-t">
+                <div className="flex items-center gap-3 py-2">
+                  <img
+                    src={session.user.image || "/images/auth/user.png"}
+                    alt={session.user.name || "User"}
+                    className="w-8 h-8 rounded-full object-cover"
+                  />
+                  <span className="font-semibold text-black text-[15.5px]" style={{ fontFamily: "'Montserrat', Helvetica" }}>
+                    {session.user.name?.split(" ")[0] || "User"} {session.user.name?.split(" ")[1]?.[0] || ""}
+                  </span>
+                </div>
+                <button
+                  onClick={() => {
+                    signOut();
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="flex items-center gap-2 py-2 text-red-600 hover:bg-red-50 px-2 rounded transition-colors"
+                >
+                  <LogOut size={18} />
+                  <span className="font-semibold text-[14px]" style={{ fontFamily: "'Montserrat', Helvetica" }}>
+                    Logout
+                  </span>
+                </button>
+              </div>
+            ) : (
               <div className="flex flex-col space-y-3 pt-4 border-t">
                 <Link
                   className="font-semibold text-black text-[15.5px] py-2"
@@ -181,7 +223,7 @@ export const Navbar = () => {
                   Login
                 </Link>
                 <Link 
-                  className="bg-[#2EC3D6] text-white px-6 py-3 rounded-lg text-center"
+                  className="bg-black text-white px-6 py-3 rounded-lg text-center"
                   href="/auth/signup"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >

@@ -177,31 +177,34 @@ export default function SignupPage() {
               </span>
               <Separator className="flex-1 bg-blackish-green opacity-25" />
             </div>
+
             <div className="flex items-start gap-4 w-full">
-              <Card className="flex-1 border border-[#2dc3d7] rounded">
-                <CardContent className="flex justify-center items-center p-0">
+              <Card className="flex-1 border border-[#2dc3d7] rounded p-2">
+                <CardContent className="flex justify-center items-center">
                   <img
                     className="w-6 h-6 m-4"
                     alt="Facebook"
-                    src="/frame-224.svg"
+                    src="/images/auth/facebook.png"
                   />
                 </CardContent>
               </Card>
-              <Card className="flex-1 border border-[#2dc3d7] rounded">
-                <CardContent className="flex justify-center items-center p-0">
+
+              <Card className="flex-1 border border-[#2dc3d7] rounded p-2">
+                <CardContent className="flex justify-center items-center">
                   <img
                     className="w-6 h-6 m-4"
                     alt="Google"
-                    src="/flat-color-icons-google.svg"
+                    src="/images/auth/google.png"
                   />
                 </CardContent>
               </Card>
-              <Card className="flex-1 border border-[#2dc3d7] rounded">
-                <CardContent className="flex justify-center items-center p-0">
+
+              <Card className="flex-1 border border-[#2dc3d7] rounded p-2">
+                <CardContent className="flex justify-center items-center">
                   <img
                     className="w-6 h-6 m-4"
                     alt="Apple"
-                    src="/ant-design-apple-filled.svg"
+                    src="/images/auth/apple.png"
                   />
                 </CardContent>
               </Card>

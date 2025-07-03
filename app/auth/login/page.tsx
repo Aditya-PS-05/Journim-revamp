@@ -1,6 +1,6 @@
 "use client";
 
-import { EyeOffIcon } from "lucide-react";
+import { EyeOffIcon, EyeIcon } from "lucide-react";
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -17,6 +17,7 @@ export default function page() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -54,7 +55,6 @@ export default function page() {
               alt="Mountain"
               src="/images/auth/mountain.png"
             />
-
             <div className="absolute w-[616px] h-[58px] top-[758px] left-0.5 rounded-[30px_30px_0px_0px] [background:linear-gradient(180deg,rgba(0,0,0,0.5)_0%,rgba(0,0,0,0)_100%)]" />
 
             <div className="inline-flex items-start gap-2 absolute top-[782px] left-[274px]">
@@ -82,13 +82,13 @@ export default function page() {
           >
             <div className="flex flex-col items-start gap-6 relative self-stretch w-full">
               <div className="w-full">
-                <div className="relative">
+                <div className="flex items-center border border-[#79747e] rounded bg-neutrals">
                   <Input
                     onChange={(e) => setEmail(e.target.value)}
-                    className="h-14 pl-4 pr-0 py-2 border border-[#79747e] rounded bg-neutrals"
-                    defaultValue="john.doe@gmail.com"
+                    className="h-14 pl-4 pr-0 py-2 rounded bg-neutrals border-none"
+                    placeholder="john.doe@gmail.com"
                   />
-                  <span className="inline-flex items-center px-1 py-0 absolute -top-2 left-3 bg-neutrals text-[#1c1b1f] text-sm">
+                  <span className="bg-white inline-flex items-center px-1 py-0 absolute -top-2 left-3 bg-neutrals text-[#1c1b1f] text-sm">
                     Email
                   </span>
                 </div>
@@ -99,15 +99,25 @@ export default function page() {
                   <div className="flex items-center border border-[#79747e] rounded bg-neutrals">
                     <Input
                       onChange={(e) => setPassword(e.target.value)}
-                      type="password"
-                      className="h-14 pl-4 pr-0 py-2 border-none"
-                      defaultValue="•••••••••••••••••••••••••"
+                      type={showPassword ? "text" : "password"}
+                      className="h-14 pl-4 pr-0 py-2 border-none focus:outline-none focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+                      placeholder="**********"
                     />
-                    <Button variant="ghost" size="icon" className="h-12 w-12">
-                      <EyeOffIcon className="h-6 w-6" />
+                    <Button 
+                      type="button"
+                      variant="ghost" 
+                      size="icon" 
+                      className="h-12 w-12"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? (
+                        <EyeOffIcon className="h-6 w-6" />
+                      ) : (
+                        <EyeIcon className="h-6 w-6" />
+                      )}
                     </Button>
                   </div>
-                  <span className="inline-flex items-center px-1 py-0 absolute -top-2 left-3 bg-neutrals text-blackish-green text-sm">
+                  <span className="bg-white inline-flex items-center px-1 py-0 absolute -top-2 left-3 bg-neutrals text-blackish-green text-sm">
                     Password
                   </span>
                 </div>
@@ -168,32 +178,32 @@ export default function page() {
             </div>
 
             <div className="flex items-start gap-4 w-full">
-              <Card className="flex-1 border border-[#2dc3d7] rounded">
-                <CardContent className="flex justify-center items-center p-0">
+              <Card className="flex-1 border border-[#2dc3d7] rounded p-2">
+                <CardContent className="flex justify-center items-center">
                   <img
                     className="w-6 h-6 m-4"
                     alt="Facebook"
-                    src="/frame-224.svg"
+                    src="/images/auth/facebook.png"
                   />
                 </CardContent>
               </Card>
 
-              <Card className="flex-1 border border-[#2dc3d7] rounded">
-                <CardContent className="flex justify-center items-center p-0">
+              <Card className="flex-1 border border-[#2dc3d7] rounded p-2">
+                <CardContent className="flex justify-center items-center">
                   <img
                     className="w-6 h-6 m-4"
                     alt="Google"
-                    src="/flat-color-icons-google.svg"
+                    src="/images/auth/google.png"
                   />
                 </CardContent>
               </Card>
 
-              <Card className="flex-1 border border-[#2dc3d7] rounded">
-                <CardContent className="flex justify-center items-center p-0">
+              <Card className="flex-1 border border-[#2dc3d7] rounded p-2">
+                <CardContent className="flex justify-center items-center">
                   <img
                     className="w-6 h-6 m-4"
                     alt="Apple"
-                    src="/ant-design-apple-filled.svg"
+                    src="/images/auth/apple.png"
                   />
                 </CardContent>
               </Card>
@@ -201,7 +211,7 @@ export default function page() {
           </form>
         </div>
 
-        <div className="absolute top-[123px] left-[104px] [font-family:'American_Captain-Regular',Helvetica] font-normal text-[#2dc3d7] text-[42px] tracking-[0] leading-normal whitespace-nowrap">
+        <div className=" american-captain absolute top-[123px] left-[104px] [font-family:'American_Captain-Regular',Helvetica] font-normal text-[#2dc3d7] text-[42px] tracking-[0] leading-normal whitespace-nowrap">
           Journim
         </div>
       </div>
