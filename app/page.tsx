@@ -1,5 +1,3 @@
-"use client";
-
 import { Navbar } from "@/components/base/Navbar/Navbar";
 import { Reviews } from "@/components/base/Reviews/Reviews";
 import { LocateIndia } from "@/components/base/LocateIndia/LocateIndia";
