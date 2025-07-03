@@ -2,7 +2,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Footer } from "../Footer/Footer";
 
 export const Founders = () => {
-  // Founder data for mapping
   const founders = [
     {
       name: "Aman Gopal",
@@ -27,23 +26,23 @@ export const Founders = () => {
         <Card className="relative mx-auto w-[85%] mt-[-170px] bg-[#c0ecf2] rounded-[21.99px] shadow-[0px_4.4px_17.59px_#1122110d] overflow-hidden mb-16">
           <CardContent className="p-0">
             <div className="p-14 pb-0">
-              <h2 className="font-['Montserrat',Helvetica] font-semibold text-[#1e1e1e] text-[48.4px] leading-[59.4px]">
+              <h2 className="font-['Montserrat',Helvetica] font-semibold text-[#1e1e1e] text-[48.4px] leading-[59.4px] text-center md:text-left">
                 Meet our Founders
               </h2>
 
-              <div className="flex flex-wrap justify-start gap-[150px] mt-12 mb-12">
+              <div className="flex flex-wrap justify-start xs:gap-[20px] sm:gap-[20px] md:gap-[180px] mt-12 mb-12 ">
                 {founders.map((founder, index) => (
-                  <div key={index} className="flex items-center gap-6">
+                  <div key={index} className="mx-auto md:mx-0 flex flex-col sm:flex-row items-center justify-start sm:gap-2 md:gap-6">
                     <img
-                      className="w-36 h-36 rounded-full object-cover"
+                      className="w-36 h-36 m-4 rounded-full object-cover"
                       src={founder.imageSrc}
                       alt={founder.imageAlt}
                     />
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-2 text-center sm:text-left">
                       <h3 className="opacity-70 font-['Montserrat',Helvetica] font-semibold text-blackish-green text-[26.6px]">
                         {founder.name}
                       </h3>
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 justify-center sm:justify-start">
                         <span className="font-['Montserrat',Helvetica] font-medium text-blackish-green text-[15.5px]">
                           {founder.title}
                         </span>
@@ -66,7 +65,7 @@ export const Founders = () => {
         </Card>
 
         {/* Decorative Element with Car Image */}
-        <div className="absolute top-6 right-[70px] w-[496px] h-[512px] rotate-[5.67deg]">
+        <div className="absolute top-6 right-[70px] w-[496px] h-[512px] rotate-[5.67deg] lg:block hidden">
           <div className="relative h-full">
             {/* Car Image */}
             <img
@@ -77,41 +76,7 @@ export const Founders = () => {
           </div>
         </div>
 
-        {/* Footer Section */}
-        <footer className="w-[85%] mx-auto">
-          <div className="flex flex-wrap justify-between">
-            {/* Brand and Social Media */}
-            <div className="flex flex-col gap-6 mr-20">
-  <h2 className="american-captain font-normal text-white text-[38.5px]">
-    Journim
-  </h2>
-  <div className="flex items-center gap-3">
-    <img
-      className="w-[22px] h-[22px]"
-      alt="YouTube"
-      src="/images/footer/facebook.png"
-    />
-    <img
-      className="w-[22px] h-[22px]"
-      alt="X (Twitter)"
-      src="/images/footer/x.png"
-    />
-    <img
-      className="w-[22px] h-[22px]"
-      alt="Facebook"
-      src="/images/footer/youtube.png"
-    />
-    <img
-      className="w-[22px] h-[22px]"
-      alt="Instagram"
-      src="/images/footer/instagram.png"
-    />
-  </div>
-</div>
-
-            <Footer />
-          </div>
-        </footer>
+        <Footer />
       </div>
     </section>
   );
