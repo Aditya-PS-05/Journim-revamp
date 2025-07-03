@@ -1,7 +1,8 @@
+"use client";
+
 import { BedIcon, PlaneIcon, Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { useSession, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useRouter, usePathname } from "next/navigation";
 import { useState } from "react";
 

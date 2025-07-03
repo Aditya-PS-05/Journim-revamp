@@ -1,3 +1,5 @@
+"use client";
+
 import { Carousel, CarouselApi, CarouselContent, CarouselItem } from '@/components/ui/carousel'
 import { Tabs, TabsList, TabsTrigger } from '@radix-ui/react-tabs';
 import { BedIcon, PlaneIcon } from 'lucide-react';
