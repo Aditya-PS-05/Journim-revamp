@@ -38,10 +38,10 @@ export default function TripTypeSelection({ selectedState, selectedCity, onBack,
           <div className="flex items-center justify-between">
             <div className="flex-1">
               <div className="w-full bg-[#e5e5e5] rounded-full h-1">
-                <div className="bg-[#2ec4d7] h-1 rounded-full" style={{ width: "66.67%" }}></div>
+                <div className="bg-[#2ec4d7] h-1 rounded-full" style={{ width: "75%" }}></div>
               </div>
             </div>
-            <div className="ml-4 text-[#3f3f3f] font-medium">2/3</div>
+            <div className="ml-4 text-[#3f3f3f] font-medium">3/4</div>
           </div>
         </div>
       </div>
@@ -55,7 +55,7 @@ export default function TripTypeSelection({ selectedState, selectedCity, onBack,
         </div>
 
         <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold text-[#111822] mb-2">What kind of trip are you planning ?</h1>
+          <h1 className="text-4xl font-bold text-[#111822] mb-2">What kind of trip are you planning?</h1>
         </div>
 
         {/* Trip Type Selection */}
@@ -89,7 +89,7 @@ export default function TripTypeSelection({ selectedState, selectedCity, onBack,
 
         {/* Number of People */}
         <div className="text-center mb-16">
-          <h2 className="text-xl text-[#3f3f3f] mb-8">Number of people travelling ?</h2>
+          <h2 className="text-xl text-[#3f3f3f] mb-8">Number of people travelling?</h2>
           <div className="max-w-xs mx-auto">
             <Select value={numberOfPeople} onValueChange={setNumberOfPeople}>
               <SelectTrigger className="w-full h-12 text-[#3f3f3f] border-[#d4d4d4]">

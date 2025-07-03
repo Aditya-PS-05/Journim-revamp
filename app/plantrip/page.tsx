@@ -7,36 +7,50 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Globe, MapPin, Plane, Car } from "lucide-react"
 import { Navbar } from "@/components/base/Navbar/Navbar"
 import Calender from "@/components/base/Calender/Calender"
-import TripTypeSelection from "@/components/base/TripTypeSelection" // Import the new component
+import TripTypeSelection from "@/components/base/TripTypeSelection"
+import { CuisinePreferences } from "@/components/base/CuisinePreference"
 
 export default function page() {
   const [selectedState, setSelectedState] = useState<any>()
   const [selectedCity, setSelectedCity] = useState<string>("")
-  const [currentStep, setCurrentStep] = useState<'planning' | 'calendar' | 'tripType'>('planning')
+  const [currentStep, setCurrentStep] = useState<'planning' | 'calendar' | 'tripType' | 'cuisine'>('planning')
+  const [dateData, setDateData] = useState<any>(null)
   const [tripData, setTripData] = useState<any>(null)
+  const [cuisineData, setCuisineData] = useState<any>(null)
 
-  // Check if both state and city are selected
+  // Check current step to show appropriate component
   const shouldShowCalendar = selectedState && selectedCity && currentStep === 'calendar'
   const shouldShowTripType = currentStep === 'tripType'
+  const shouldShowCuisine = currentStep === 'cuisine'
 
-  const handleCalendarNext = (dateData: any) => {
-    // Handle calendar data and move to trip type selection
+  const handleCalendarNext = (calendarData: any) => {
+    setDateData(calendarData)
     setCurrentStep('tripType')
   }
 
   const handleTripTypeNext = (tripTypeData: any) => {
-    // Handle trip type data - you can navigate to the next step or final submission
     setTripData(tripTypeData)
+    setCurrentStep('cuisine')
+  }
+
+  const handleCuisineNext = (cuisinePreferenceData: any) => {
+    setCuisineData(cuisinePreferenceData)
     console.log('Trip planning completed:', {
       state: selectedState,
       city: selectedCity,
-      tripType: tripTypeData
+      dates: dateData,
+      tripType: tripData,
+      cuisine: cuisinePreferenceData
     })
-    // Navigate to next step or show confirmation
+    // Navigate to final step or show confirmation
   }
 
   const handleBackToCalendar = () => {
     setCurrentStep('calendar')
+  }
+
+  const handleBackToTripType = () => {
+    setCurrentStep('tripType')
   }
 
   const handleBackToPlanning = () => {
@@ -52,7 +66,12 @@ export default function page() {
 
       {/* Main Content */}
       <div className="px-8 py-8">
-        {shouldShowTripType ? (
+        {shouldShowCuisine ? (
+          <CuisinePreferences 
+            onBack={handleBackToTripType}
+            onNext={handleCuisineNext}
+          />
+        ) : shouldShowTripType ? (
           <TripTypeSelection 
             selectedState={selectedState}
             selectedCity={selectedCity}
@@ -64,7 +83,7 @@ export default function page() {
             selectedState={selectedState} 
             selectedCity={selectedCity}
             onBack={handleBackToPlanning}
-            onNext={handleCalendarNext} // You'll need to modify your Calendar component to accept this
+            onNext={handleCalendarNext}
           />
         ) : (
           <MainContent 
@@ -150,6 +169,17 @@ function MainContent({ selectedState, selectedCity, setSelectedState, setSelecte
     setSelectedCity(cityName)
   }
 
+  // Handle card clicks
+  const handleCardClick = (item: any) => {
+    // If we're showing initial suggestions (states), select the state
+    if (!selectedState) {
+      handleStateSelect(item.name as keyof typeof statesData)
+    } else {
+      // If we're showing cities, select the city
+      handleCitySelect(item.name)
+    }
+  }
+
   // Auto-navigate to calendar when both state and city are selected
   useEffect(() => {
     if (selectedState && selectedCity) {
@@ -219,13 +249,23 @@ function MainContent({ selectedState, selectedCity, setSelectedState, setSelecte
 
           <div className="grid grid-cols-2 gap-6">
             {suggestionsToShow.map((item: { name: string; image: string; description: string }) => (
-              <div key={item.name} className="relative rounded-2xl overflow-hidden group cursor-pointer h-60">
+              <div 
+                key={item.name} 
+                className="relative rounded-2xl overflow-hidden group cursor-pointer h-60 hover:scale-105 transition-transform duration-300"
+                onClick={() => handleCardClick(item)}
+              >
                 <Image src={item.image || "/placeholder.svg"} alt={item.name} fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
                 <div className="absolute bottom-4 left-4 right-4">
                   <h3 className="text-white text-xl font-bold mb-1">{item.name}</h3>
                   <p className="text-white/90 text-sm mb-3">{item.description}</p>
-                  <Button className="bg-[#2ec4d7] hover:bg-[#2ec4d7]/90 text-white px-6 py-2 rounded-lg font-medium">
+                  <Button 
+                    className="bg-[#2ec4d7] hover:bg-[#2ec4d7]/90 text-white px-6 py-2 rounded-lg font-medium"
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevent card click when button is clicked
+                      handleCardClick(item);
+                    }}
+                  >
                     Explore
                   </Button>
                 </div>
