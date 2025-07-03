@@ -8,6 +8,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -15,6 +16,7 @@ export default function SignupPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,6 +27,7 @@ export default function SignupPage() {
       return;
     }
 
+    setIsLoading(true);
     try {
       const res = await fetch("/api/auth/signup", {
         method: "POST",
@@ -39,14 +42,21 @@ export default function SignupPage() {
       });
 
       if (res.ok) {
+        toast.success("Account created successfully! Please login to continue.");
         router.push("/auth/login");
       } else {
         const data = await res.json();
-        setError(data.error || "Something went wrong.");
+        const errorMessage = data.error || "Something went wrong.";
+        setError(errorMessage);
+        toast.error(errorMessage);
       }
     } catch (error) {
-      setError("Something went wrong.");
+      const errorMessage = "Something went wrong.";
+      setError(errorMessage);
+      toast.error(errorMessage);
       console.log("Error during registration: ", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -137,9 +147,10 @@ export default function SignupPage() {
             <div className="flex flex-col items-start gap-4 w-full">
               <Button
                 type="submit"
-                className="w-full h-12 bg-[#2dc3d7] text-blackish-green font-montserrat-semibold-14px hover:bg-[#25afc1]"
+                disabled={isLoading}
+                className="w-full h-12 bg-[#2dc3d7] text-blackish-green font-montserrat-semibold-14px hover:bg-[#25afc1] disabled:opacity-50"
               >
-                Sign Up
+                {isLoading ? "Creating Account..." : "Sign Up"}
               </Button>
               {error && (
                 <div className="bg-red-500 text-white w-fit text-sm py-1 px-3 rounded-md mt-2">

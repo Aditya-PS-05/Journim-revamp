@@ -1,13 +1,15 @@
-import { BedIcon, PlaneIcon } from "lucide-react";
+import { BedIcon, PlaneIcon, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import { useRouter, usePathname } from "next/navigation";
+import { useState } from "react";
 
 export const Navbar = () => {
   const { data: session } = useSession();
   const router = useRouter();
   const pathname = usePathname();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Determine if we are on the main page
   const isMainPage = pathname === "/";
@@ -33,72 +35,167 @@ export const Navbar = () => {
   ];
 
   return (
-    <header className={`flex w-full items-center justify-between px-4 py-4 ${navBg}`}>
-      <div
-        className={`text-[30px] font-normal tracking-[0] leading-normal ${textColor} left-6 font-normal whitespace-nowrap american-captain`}
-      >
-        <Link href="/" className="text-[#2EC3D6]">Journim</Link>
-      </div>
+    <>
+      <header className={`flex w-full items-center justify-between px-4 py-4 ${navBg}`}>
+        {/* Mobile Layout */}
+        <div className="md:hidden flex items-center justify-between w-full">
+          {/* Hamburger Menu */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className={`${iconColor} p-2`}
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
 
-      <nav className="flex items-start gap-9">
-        {navItems.map((item, index) => {
-          // Add underline to 'Plan a Trip' if on /plantrip
-          const isActive = item.text === "Plan a Trip" && pathname === "/plantrip";
-          return (
-            <div key={index} className="flex flex-col items-center gap-1">
-              <div className="relative flex items-center">
-                {item.icon}
-                <div
-                  className={`ml-3 font-semibold text-neutrals text-[18.1px] ${textColor}`}
-                  style={{ fontFamily: "'Montserrat', Helvetica" }}
-                >
-                  <Link href={item.href}>{item.text}</Link>
-                  
-                </div>
-              </div>
-              {isActive && (
-                <div className="w-full h-2 mt-1 bg-[#24c6e3] rounded-b-lg shadow" style={{ minWidth: 80 }} />
-              )}
-            </div>
-          );
-        })}
-      </nav>
+          {/* Centered Logo */}
+          <div className="absolute left-1/2 transform -translate-x-1/2">
+            <Link href="/" className="text-[#2EC3D6] text-[30px] font-normal american-captain">
+              Journim
+            </Link>
+          </div>
 
-      <div className="flex items-center gap-9">
-        {session && session.user ? (
-          <>
-            <div className="flex items-center gap-4">
+          {/* Profile Icon */}
+          <div className="flex items-center">
+            {session && session.user ? (
               <img
                 src={session.user.image || "/images/auth/user.png"}
                 alt={session.user.name || "User"}
-                className="w-12 h-12 rounded-[18px] object-cover"
+                className="w-10 h-10 rounded-full object-cover"
               />
-              <span className="text-[15.51px] font-semibold text-[#23272E]" style={{ fontFamily: "'Montserrat', Helvetica" }}>
-                {session.user.name?.split(" ")[0] || "User"} {session.user.name?.split(" ")[1]?.[0] || ""}
-              </span>
-            </div>
-          </>
-        ) : (
-          <>
-            <Link
-              className={`font-semibold text-neutrals text-[15.5px] ${textColor}`}
-              style={{ fontFamily: "'Montserrat', Helvetica" }}
-              href="/auth/login"
-            >
-              Login
-            </Link>
+            ) : (
+              <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center">
+                <span className={`text-sm ${textColor}`}>?</span>
+              </div>
+            )}
+          </div>
+        </div>
 
-            <Link className={`h-[53.16px] px-[26.58px] py-[11.08px] rounded-[8.86px] ${buttonBg}`} href="/auth/signup">
-              <span
-                className="font-semibold text-[14px]"
-                style={{ fontFamily: "'Montserrat', Helvetica" }}
-              >
-                Sign up
-              </span>
-            </Link>
-          </>
-        )}
-      </div>
-    </header>
+        {/* Desktop Layout */}
+        <div className="hidden md:flex w-full items-center justify-between">
+          <div
+            className={`text-[30px] font-normal tracking-[0] leading-normal ${textColor} left-6 font-normal whitespace-nowrap american-captain`}
+          >
+            <Link href="/" className="text-[#2EC3D6]">Journim</Link>
+          </div>
+
+          <nav className="flex items-start gap-9">
+            {navItems.map((item, index) => {
+              // Add underline to 'Plan a Trip' if on /plantrip
+              const isActive = item.text === "Plan a Trip" && pathname === "/plantrip";
+              return (
+                <div key={index} className="flex flex-col items-center gap-1">
+                  <div className="relative flex items-center">
+                    {item.icon}
+                    <div
+                      className={`ml-3 font-semibold text-neutrals text-[18.1px] ${textColor}`}
+                      style={{ fontFamily: "'Montserrat', Helvetica" }}
+                    >
+                      <Link href={item.href}>{item.text}</Link>
+                      
+                    </div>
+                  </div>
+                  {isActive && (
+                    <div className="w-full h-2 mt-1 bg-[#24c6e3] rounded-b-lg shadow" style={{ minWidth: 80 }} />
+                  )}
+                </div>
+              );
+            })}
+          </nav>
+
+          <div className="flex items-center gap-9">
+            {session && session.user ? (
+              <>
+                <div className="flex items-center gap-4">
+                  <img
+                    src={session.user.image || "/images/auth/user.png"}
+                    alt={session.user.name || "User"}
+                    className="w-12 h-12 rounded-[18px] object-cover"
+                  />
+                  <span className="text-[15.51px] font-semibold text-[#23272E]" style={{ fontFamily: "'Montserrat', Helvetica" }}>
+                    {session.user.name?.split(" ")[0] || "User"} {session.user.name?.split(" ")[1]?.[0] || ""}
+                  </span>
+                </div>
+              </>
+            ) : (
+              <>
+                <Link
+                  className={`font-semibold text-neutrals text-[15.5px] ${textColor}`}
+                  style={{ fontFamily: "'Montserrat', Helvetica" }}
+                  href="/auth/login"
+                >
+                  Login
+                </Link>
+
+                <Link className={`h-[53.16px] px-[26.58px] py-[11.08px] rounded-[8.86px] ${buttonBg}`} href="/auth/signup">
+                  <span
+                    className="font-semibold text-[14px]"
+                    style={{ fontFamily: "'Montserrat', Helvetica" }}
+                  >
+                    Sign up
+                  </span>
+                </Link>
+              </>
+            )}
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile Navigation Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-lg z-50">
+          <nav className="flex flex-col p-4 space-y-4">
+            {navItems.map((item, index) => {
+              const isActive = item.text === "Plan a Trip" && pathname === "/plantrip";
+              return (
+                <div key={index} className="flex flex-col">
+                  <div className="flex items-center py-3">
+                    {item.icon}
+                    <div
+                      className="ml-3 font-semibold text-black text-[18.1px]"
+                      style={{ fontFamily: "'Montserrat', Helvetica" }}
+                    >
+                      <Link 
+                        href={item.href}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {item.text}
+                      </Link>
+                    </div>
+                  </div>
+                  {isActive && (
+                    <div className="w-full h-1 bg-[#24c6e3] rounded" />
+                  )}
+                </div>
+              );
+            })}
+            
+            {!session && (
+              <div className="flex flex-col space-y-3 pt-4 border-t">
+                <Link
+                  className="font-semibold text-black text-[15.5px] py-2"
+                  style={{ fontFamily: "'Montserrat', Helvetica" }}
+                  href="/auth/login"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Login
+                </Link>
+                <Link 
+                  className="bg-[#2EC3D6] text-white px-6 py-3 rounded-lg text-center"
+                  href="/auth/signup"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <span
+                    className="font-semibold text-[14px]"
+                    style={{ fontFamily: "'Montserrat', Helvetica" }}
+                  >
+                    Sign up
+                  </span>
+                </Link>
+              </div>
+            )}
+          </nav>
+        </div>
+      )}
+    </>
   );
 };

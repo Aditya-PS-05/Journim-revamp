@@ -10,15 +10,18 @@ import { Separator } from "@/components/ui/separator";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { toast } from "sonner";
 
 export default function page() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
     try {
       const res = await signIn("credentials", {
         email,
@@ -28,12 +31,16 @@ export default function page() {
 
       if (res?.error) {
         setError("Invalid Credentials");
+        toast.error("Invalid credentials. Please try again.");
         return;
       }
 
+      toast.success("Login successful! Welcome back.");
       router.replace("/");
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -129,9 +136,10 @@ export default function page() {
             <div className="flex flex-col items-start gap-4 w-full">
               <Button
                 type="submit"
-                className="w-full h-12 bg-[#2dc3d7] text-blackish-green font-montserrat-semibold-14px hover:bg-[#25afc1]"
+                disabled={isLoading}
+                className="w-full h-12 bg-[#2dc3d7] text-blackish-green font-montserrat-semibold-14px hover:bg-[#25afc1] disabled:opacity-50"
               >
-                Login
+                {isLoading ? "Logging in..." : "Login"}
               </Button>
               {error && (
                 <div className="bg-red-500 text-white w-fit text-sm py-1 px-3 rounded-md mt-2">

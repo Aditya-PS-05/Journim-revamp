@@ -50,9 +50,9 @@ export default function Home() {
   return (
     <div className="relative w-full bg-white overflow-x-hidden">
       {/* Full screen carousel section */}
-      <section className="relative w-full h-[60vh] sm:h-[80vh] md:h-screen">
-        <div className="relative w-full h-full p-2 sm:p-4">
-          <div className="relative w-full h-full rounded-[16px] sm:rounded-[20px] overflow-hidden">
+      <section className="relative w-full h-screen min-h-[100dvh]">
+        <div className="relative w-full h-full p-1 sm:p-4">
+          <div className="relative w-full h-full rounded-[8px] sm:rounded-[20px] overflow-hidden">
             <Carousel 
               setApi={setApi}
               className="w-full h-full"
@@ -61,9 +61,9 @@ export default function Home() {
                 loop: true,
               }}
             >
-              <CarouselContent>
+              <CarouselContent className="h-full">
                 {carouselImages.map((image) => (
-                  <CarouselItem key={image.id} className="w-full h-full">
+                  <CarouselItem key={image.id} className="w-full min-h-screen md:h-full">
                     <div className="h-full w-full">
                       <img
                         src={image.src}
@@ -91,9 +91,9 @@ export default function Home() {
                 by you, for you
               </p>
 
-              <div className="flex flex-col sm:flex-row justify-center mt-8 sm:mt-20 gap-3 sm:gap-4 w-full max-w-[95vw]">
+              <div className="flex flex-col sm:flex-row justify-center items-center mt-8 sm:mt-20 gap-3 sm:gap-4 w-full max-w-[95vw]">
                 <Tabs defaultValue="plan" className="w-auto">
-                  <TabsList className="p-0 bg-transparent space-x-0 sm:space-x-4 flex flex-col sm:flex-row gap-2 sm:gap-0">
+                  <TabsList className="p-0 bg-transparent space-x-0 sm:space-x-4 flex flex-col sm:flex-row gap-2 sm:gap-0 justify-center">
                     <TabsTrigger
                       value="plan"
                       className="h-[60px] sm:h-[84px] px-4 sm:px-7 py-2.5 sm:py-3.5 bg-[#2ec3d6] rounded-[7px] text-white data-[state=active]:bg-[#2ec3d6] data-[state=active]:text-white"
