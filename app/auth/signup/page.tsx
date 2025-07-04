@@ -1,6 +1,6 @@
 "use client";
 
-import { EyeOffIcon } from "lucide-react";
+import { EyeOffIcon, EyeIcon } from "lucide-react";
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -17,6 +17,7 @@ export default function SignupPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -97,10 +98,10 @@ export default function SignupPage() {
                   <Input
                     onChange={(e) => setName(e.target.value)}
                     value={name}
-                    className="h-14 pl-4 pr-0 py-2 border border-[#79747e] rounded bg-neutrals"
+                    className="h-14 pl-4 pr-0 py-2 border border-[#79747e] rounded bg-neutrals focus:outline-none focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0"
                     placeholder="John Doe"
                   />
-                  <span className="inline-flex items-center px-1 py-0 absolute -top-2 left-3 bg-neutrals text-[#1c1b1f] text-sm">
+                  <span className="inline-flex items-center px-1 py-0 absolute -top-2 left-3 bg-white text-[#1c1b1f] text-sm">
                     Name
                   </span>
                 </div>
@@ -110,10 +111,10 @@ export default function SignupPage() {
                   <Input
                     onChange={(e) => setEmail(e.target.value)}
                     value={email}
-                    className="h-14 pl-4 pr-0 py-2 border border-[#79747e] rounded bg-neutrals"
+                    className="h-14 pl-4 pr-0 py-2 border border-[#79747e] rounded bg-neutrals focus:outline-none focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0"
                     placeholder="john.doe@gmail.com"
                   />
-                  <span className="inline-flex items-center px-1 py-0 absolute -top-2 left-3 bg-neutrals text-[#1c1b1f] text-sm">
+                  <span className="inline-flex items-center px-1 py-0 absolute -top-2 left-3 bg-white text-[#1c1b1f] text-sm">
                     Email
                   </span>
                 </div>
@@ -124,15 +125,21 @@ export default function SignupPage() {
                     <Input
                       onChange={(e) => setPassword(e.target.value)}
                       value={password}
-                      type="password"
-                      className="h-14 pl-4 pr-0 py-2 border-none"
+                      type={showPassword ? "text" : "password"}
+                      className="h-14 pl-4 pr-0 py-2 border-none focus:outline-none focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0"
                       placeholder="•••••••••••••••••••••••••"
                     />
-                    <Button variant="ghost" size="icon" className="h-12 w-12">
-                      <EyeOffIcon className="h-6 w-6" />
+                    <Button 
+                      type="button"
+                      variant="ghost" 
+                      size="icon" 
+                      className="h-12 w-12"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? <EyeIcon className="h-6 w-6" /> : <EyeOffIcon className="h-6 w-6" />}
                     </Button>
                   </div>
-                  <span className="inline-flex items-center px-1 py-0 absolute -top-2 left-3 bg-neutrals text-blackish-green text-sm">
+                  <span className="inline-flex items-center px-1 py-0 absolute -top-2 left-3 bg-white text-blackish-green text-sm">
                     Password
                   </span>
                 </div>
@@ -211,7 +218,7 @@ export default function SignupPage() {
             </div>
           </form>
         </div>
-        <div className="absolute top-[123px] left-[104px] [font-family:'American_Captain-Regular',Helvetica] font-normal text-[#2dc3d7] text-[42px] tracking-[0] leading-normal whitespace-nowrap">
+        <div className="american-captain absolute top-[123px] left-[104px] [font-family:'American_Captain-Regular',Helvetica] font-normal text-[#2dc3d7] text-[42px] tracking-[0] leading-normal whitespace-nowrap">
           Journim
         </div>
       </div>
